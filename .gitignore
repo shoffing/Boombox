@@ -1,0 +1,9 @@
+# Ignore The following directories / file extensions
+Library
+Temp
+Build
+
+# Ignore the following file extensions
+*.exe
+*.vcproject
+*.sln

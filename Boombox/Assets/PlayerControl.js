@@ -17,7 +17,9 @@ function Start() {
 }
 
 function Update() {
-	
+	if(rigidbody.position.y < -10) {
+		Application.LoadLevel(0);
+	}
 }
 
 function FixedUpdate() {

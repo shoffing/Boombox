@@ -1,14 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\TimedFloor.js">
-    <Files>
-      <File FileName="Assets\scripts\TimedFloor.js" Line="18" Column="3" />
-      <File FileName="Assets\scripts\PlayerControl.js" Line="62" Column="33" />
-      <File FileName="Assets\scripts\KillBox.js" Line="1" Column="1" />
-      <File FileName="Assets\scripts\Key.js" Line="5" Column="24" />
-      <File FileName="Assets\scripts\Gate.js" Line="5" Column="64" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

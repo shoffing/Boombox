@@ -17,6 +17,8 @@ private var usedDoubleJump : boolean;
 private var timeUsedDoubleJump : float;
 private var cam : GameObject;
 
+private var facingLeft : boolean;
+
 //sound effect declarations
 public var damageSound : AudioClip;
 public var jumpSound : AudioClip;
@@ -32,6 +34,8 @@ function Start() {
 	usedDoubleJump = false;
 	
 	cam = GameObject.Find("Main Camera");
+	
+	facingLeft = false;
 }
 
 function Update() {
@@ -60,6 +64,17 @@ function FixedUpdate() {
 	// Calculate how fast we should be moving
 	var targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 	targetVelocity *= SPEED;
+	
+	facingLeft = targetVelocity.x < 0;
+	
+	// Face the right direction dummy
+	if(Mathf.Abs(targetVelocity.x) > 0) {
+		// TO DO : ANIMATION BLENDING BETWEEN IDLE AND WALKING
+		// mekanum natural blend, set parameter of exit and exit = velocity
+		GameObject.Find("PlayerCharacterModel").transform.rotation = facingLeft
+			? Quaternion.EulerAngles(0, -Mathf.PI/2, 0)
+			: Quaternion.EulerAngles(0, Mathf.PI/2, 0);
+	}
 
 	// Apply a force that attempts to reach our target velocity
 	var velocity = rigidbody.velocity;

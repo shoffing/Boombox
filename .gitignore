@@ -1,9 +1,13 @@
-# Ignore The following directories / file extensions
+# OS X only (not needed on other platforms)
+.DS_Store
+*.swp
+*.Trashes
+
+# All platforms
 Library
 Temp
-Build
-
-# Ignore the following file extensions
-*.exe
-*.vcproject
+*.csproj
+*.pidb
+*.unityproj
 *.sln
+*.userprefs

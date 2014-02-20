@@ -71,11 +71,14 @@ function FixedUpdate() {
 	if(Mathf.Abs(targetVelocity.x) > 0) {
 		// TO DO : ANIMATION BLENDING BETWEEN IDLE AND WALKING
 		// mekanum natural blend, set parameter of exit and exit = velocity
-		GameObject.Find("PlayerCharacterModel").transform.rotation = facingLeft
+		transform.Find("PlayerCharacter").rotation = facingLeft
 			? Quaternion.EulerAngles(0, -Mathf.PI/2, 0)
 			: Quaternion.EulerAngles(0, Mathf.PI/2, 0);
+			
 	}
-
+	
+	transform.Find("PlayerCharacter").GetComponent(Animator).SetFloat("speed", Mathf.Abs(rigidbody.velocity.x));
+	
 	// Apply a force that attempts to reach our target velocity
 	var velocity = rigidbody.velocity;
 	var velocityChange = (targetVelocity - velocity);

@@ -27,9 +27,19 @@ function Update() {
 			var planes : Plane[] = GeometryUtility.CalculateFrustumPlanes(Camera.mainCamera);
 			if(hit.rigidbody && GeometryUtility.TestPlanesAABB(planes, hit.collider.bounds)) {
 				heldObject = hit.rigidbody.gameObject;
+				
+				// Turn on boombox
+				if(heldObject.GetComponent(PusherBox) != null) {
+					heldObject.GetComponent(PusherBox).enable();
+				}
 			}
 		}
 	} else if(!Input.GetMouseButton(0) && heldObject) {
+		// Turn off boombox
+		if(heldObject.GetComponent(PusherBox) != null) {
+			heldObject.GetComponent(PusherBox).disable();
+		}
+		
 		// Just let go of the object
 		heldObject = null;
 	}

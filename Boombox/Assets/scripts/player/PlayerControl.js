@@ -5,11 +5,9 @@ private static var MAX_VELOCITY_CHANGE = 10.0;
 
 private var SPEED = 10;
 
-private static var GRAVITY = 10;
 private static var JUMP_HEIGHT = 2;
 
 private var onGround : boolean;
-private var health : float;
 
 private var hasKey : boolean;
 private var hasDoubleJump : boolean;
@@ -27,8 +25,6 @@ public var itemPickup : AudioClip;
 
 
 function Start() {
-	health = 100;
-	
 	hasKey = false;
 	hasDoubleJump = false;
 	usedDoubleJump = false;
@@ -46,49 +42,47 @@ function Update() {
 	if(rigidbody.position.y < -10) {
 		Application.LoadLevel(0);
 	}
-	
-	// Hit jump button and we're on the ground
-	if(Input.GetButtonDown("Jump")) {
-		if(onGround || (hasDoubleJump && !usedDoubleJump)) {
-			rigidbody.velocity = Vector3(rigidbody.velocity.x, Mathf.Sqrt(2 * JUMP_HEIGHT * GRAVITY), rigidbody.velocity.z);
-			cam.audio.clip = jumpSound;
-			cam.audio.Play();
-			if(!onGround) usedDoubleJump = true;
-		}
-		
-		// put jump sound here
-	}
 }
 
 function FixedUpdate() {
 	// Calculate how fast we should be moving
-	var targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-	targetVelocity *= SPEED;
-	
-	facingLeft = targetVelocity.x < 0;
-	
-	// Face the right direction dummy
-	if(Mathf.Abs(targetVelocity.x) > 0) {
-		// TO DO : ANIMATION BLENDING BETWEEN IDLE AND WALKING
-		// mekanum natural blend, set parameter of exit and exit = velocity
-		transform.Find("PlayerCharacter").rotation = facingLeft
-			? Quaternion.EulerAngles(0, -Mathf.PI/2, 0)
-			: Quaternion.EulerAngles(0, Mathf.PI/2, 0);
-			
+	if(Input.GetAxis("Horizontal") != 0) {
+		var targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+		targetVelocity *= SPEED;
+		
+		facingLeft = targetVelocity.x < 0;
+		
+		// Face the right direction dummy
+		if(Mathf.Abs(targetVelocity.x) > 0) {
+			// TO DO : ANIMATION BLENDING BETWEEN IDLE AND WALKING
+			// mekanum natural blend, set parameter of exit and exit = velocity
+			transform.Find("PlayerCharacter").rotation = facingLeft
+				? Quaternion.EulerAngles(0, -Mathf.PI/2, 0)
+				: Quaternion.EulerAngles(0, Mathf.PI/2, 0);
+				
+		}
+		
+		transform.Find("PlayerCharacter").GetComponent(Animator).SetFloat("speed", Mathf.Abs(rigidbody.velocity.x));
+		
+		// Apply a force that attempts to reach our target velocity
+		var velocityChange = (targetVelocity - rigidbody.velocity);
+		velocityChange.x = Mathf.Clamp(velocityChange.x, -MAX_VELOCITY_CHANGE, MAX_VELOCITY_CHANGE);
+		velocityChange.z = 0;
+		velocityChange.y = 0;
+		rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 	}
 	
-	transform.Find("PlayerCharacter").GetComponent(Animator).SetFloat("speed", Mathf.Abs(rigidbody.velocity.x));
+	//
 	
-	// Apply a force that attempts to reach our target velocity
-	var velocity = rigidbody.velocity;
-	var velocityChange = (targetVelocity - velocity);
-	velocityChange.x = Mathf.Clamp(velocityChange.x, -MAX_VELOCITY_CHANGE, MAX_VELOCITY_CHANGE);
-	velocityChange.z = Mathf.Clamp(velocityChange.z, -MAX_VELOCITY_CHANGE, MAX_VELOCITY_CHANGE);
-	velocityChange.y = 0;
-	rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
-	
-	// Manually do gravity
-	rigidbody.AddForce(0, -GRAVITY * rigidbody.mass, 0);
+	// Hit jump button and we're on the ground
+	if(Input.GetButtonDown("Jump")) {
+		if(onGround || (hasDoubleJump && !usedDoubleJump)) {
+			rigidbody.AddForce(Vector3(0, Mathf.Sqrt(2 * JUMP_HEIGHT * Mathf.Abs(Physics.gravity.y)), 0), ForceMode.VelocityChange);;
+			cam.audio.clip = jumpSound;
+			cam.audio.Play();
+			if(!onGround) usedDoubleJump = true;
+		}
+	}
 }
 
 // ===== //
@@ -118,21 +112,6 @@ function OnCollisionExit(collision : Collision) {
 }
 
 // ===== //
-
-// deal damage to the player
-function damage(amount : float) {
-	health -= amount;
-	
-	cam.audio.clip = damageSound;
-	cam.audio.Play();
-	
-	if(health <= 0) {
-		Debug.Log("Game over!");
-		
-		yield WaitForSeconds(1);
-		Application.LoadLevel(0);
-	}
-}
 
 function holdingKey() {
 	return hasKey;

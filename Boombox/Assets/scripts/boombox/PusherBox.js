@@ -7,7 +7,7 @@ private static var EFFECT_FALLOFF_START = 4;
 private static var EFFECT_POWER = 30;
 
 function Start() {
-	boomboxActive = false;
+	enable();
 }
 
 function Update() {

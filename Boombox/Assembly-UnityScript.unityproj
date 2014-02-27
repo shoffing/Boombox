@@ -54,6 +54,7 @@
      <Compile Include="Assets\scripts\world\Key.js" />
      <Compile Include="Assets\scripts\world\KillBox.js" />
      <Compile Include="Assets\scripts\world\TimedFloor.js" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

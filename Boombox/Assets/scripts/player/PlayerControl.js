@@ -62,7 +62,7 @@ function FixedUpdate() {
 				
 		}
 		
-		transform.Find("PlayerCharacter").GetComponent(Animator).SetFloat("speed", Mathf.Abs(rigidbody.velocity.x));
+		//transform.Find("PlayerCharacter").GetComponent(Animator).SetFloat("speed", Mathf.Abs(rigidbody.velocity.x));
 		
 		// Apply a force that attempts to reach our target velocity
 		var velocityChange = (targetVelocity - rigidbody.velocity);
@@ -77,7 +77,7 @@ function FixedUpdate() {
 	// Hit jump button and we're on the ground
 	if(Input.GetButtonDown("Jump")) {
 		if(onGround || (hasDoubleJump && !usedDoubleJump)) {
-			rigidbody.AddForce(Vector3(0, Mathf.Sqrt(2 * JUMP_HEIGHT * Mathf.Abs(Physics.gravity.y)), 0), ForceMode.VelocityChange);;
+			rigidbody.AddForce(Vector3(0, Mathf.Sqrt(2 * JUMP_HEIGHT * Mathf.Abs(Physics.gravity.y)), 0), ForceMode.VelocityChange);
 			cam.audio.clip = jumpSound;
 			cam.audio.Play();
 			if(!onGround) usedDoubleJump = true;

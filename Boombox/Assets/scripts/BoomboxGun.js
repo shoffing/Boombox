@@ -30,14 +30,14 @@ function Update() {
 				
 				// Turn on boombox
 				if(heldObject.GetComponent(PusherBox) != null) {
-					heldObject.GetComponent(PusherBox).enable();
+					heldObject.GetComponent(PusherBox).disable();
 				}
 			}
 		}
 	} else if(!Input.GetMouseButton(0) && heldObject) {
 		// Turn off boombox
 		if(heldObject.GetComponent(PusherBox) != null) {
-			heldObject.GetComponent(PusherBox).disable();
+			heldObject.GetComponent(PusherBox).enable();
 		}
 		
 		// Just let go of the object

@@ -1,15 +1,44 @@
 fileFormatVersion: 2
-guid: 225eaadc5ba709941971d054026cc47f
+guid: bbc3d4c241c262e45b16df493a6e5cad
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: polySurface1
-    100002: //RootNode
-    400000: polySurface1
-    400002: //RootNode
-    2300000: polySurface1
-    3300000: polySurface1
+    100000: pCube1
+    100002: pCube2
+    100004: pCube3
+    100006: polySurface1
+    100008: polySurface2
+    100010: polySurface3
+    100012: polySurface4
+    100014: //RootNode
+    100016: transform1
+    400000: pCube1
+    400002: pCube2
+    400004: pCube3
+    400006: polySurface1
+    400008: polySurface2
+    400010: polySurface3
+    400012: polySurface4
+    400014: //RootNode
+    400016: transform1
+    2300000: pCube2
+    2300002: pCube3
+    2300004: polySurface1
+    2300006: polySurface2
+    2300008: polySurface3
+    2300010: polySurface4
+    3300000: pCube2
+    3300002: pCube3
+    3300004: polySurface1
+    3300006: polySurface2
+    3300008: polySurface3
+    3300010: polySurface4
     4300000: polySurface1
+    4300002: polySurface2
+    4300004: polySurface3
+    4300006: polySurface4
+    4300008: pCube2
+    4300010: pCube3
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -29,7 +58,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .25
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

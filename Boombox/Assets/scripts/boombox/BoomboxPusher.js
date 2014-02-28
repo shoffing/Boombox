@@ -8,24 +8,6 @@ public class BoomboxPusher extends Boombox
 	private final static var EFFECT_POWER = 30;
 	
 	virtual function bbUpdate() {
-=======
-private var boomboxActive : boolean;
-
-private static var EFFECT_RADIUS = 5;
-private static var EFFECT_FALLOFF_START = 4;
-private static var EFFECT_POWER = 30;
-
-function Start() {
-	enable();
-}
-
-function Update() {
-	// Render concentric rings here
-}
-
-function FixedUpdate() {
-	if(boomboxActive) {
->>>>>>> origin:Boombox/Assets/scripts/boombox/PusherBox.js
 		var colliders : Collider[] = Physics.OverlapSphere(transform.position, EFFECT_RADIUS);
 		
 		for(var hit : Collider in colliders) {

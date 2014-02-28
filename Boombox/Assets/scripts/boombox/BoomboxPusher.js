@@ -1,6 +1,5 @@
 ﻿#pragma strict
 
-<<<<<<< HEAD:Boombox/Assets/scripts/boombox/BoomboxPusher.js
 public class BoomboxPusher extends Boombox
 {
 	private final static var EFFECT_RADIUS = 5;

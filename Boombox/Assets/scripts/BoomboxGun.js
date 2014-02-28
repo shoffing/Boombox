@@ -27,34 +27,27 @@ function Update() {
 			var planes : Plane[] = GeometryUtility.CalculateFrustumPlanes(Camera.mainCamera);
 			if(hit.rigidbody && GeometryUtility.TestPlanesAABB(planes, hit.collider.bounds)) {
 				heldObject = hit.rigidbody.gameObject;
-				
-				// Turn on boombox
-				if(heldObject.GetComponent(PusherBox) != null) {
-					heldObject.GetComponent(PusherBox).disable();
-				}
 			}
 		}
 	} else if(!Input.GetMouseButton(0) && heldObject) {
-		// Turn off boombox
-		if(heldObject.GetComponent(PusherBox) != null) {
-			heldObject.GetComponent(PusherBox).enable();
-		}
-		
 		// Just let go of the object
 		heldObject = null;
 	}
 	
 	
-	// Move the held object to the mouse position
 	if(heldObject) {
+		// Move the held object to the mouse position
 		var heldObjectNewPos = mousePosWorld;
-		
 		if(Vector3.Distance(heldObjectNewPos, eyePos) < 2.5) {
 			heldObjectNewPos = eyePos + aimDir * 2.5;
 		}
-		
 		var force = ( (heldObjectNewPos - heldObject.rigidbody.position) * 10 - heldObject.rigidbody.velocity ) * heldObject.rigidbody.mass;
 		heldObject.rigidbody.AddForce(40 * force, ForceMode.Force);
+		
+		// Listen for right click to toggle a boombox
+		if(Input.GetMouseButtonUp(1) && heldObject.GetComponent(Boombox) != null) {
+			heldObject.GetComponent(Boombox).toggle();
+		}
 		
 		Debug.DrawLine(eyePos, heldObject.rigidbody.position, Color.green);
 	} else {

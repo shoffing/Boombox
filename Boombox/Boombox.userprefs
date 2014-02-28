@@ -1,11 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\boombox\PusherBox.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\boombox\BoomboxPusher.js">
     <Files>
-      <File FileName="Assets\scripts\boombox\PusherBox.js" Line="23" Column="41" />
-      <File FileName="Assets\scripts\BoomboxGun.js" Line="32" Column="53" />
-      <File FileName="Assets\scripts\player\PlayerControl.js" Line="71" Column="23" />
-      <File FileName="Assets\scripts\world\KillBox.js" Line="6" Column="67" />
+      <File FileName="Assets\scripts\BoomboxGun.js" Line="8" Column="31" />
+      <File FileName="Assets\scripts\boombox\Boombox.js" Line="19" Column="20" />
+      <File FileName="Assets\scripts\boombox\BoomboxPusher.js" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

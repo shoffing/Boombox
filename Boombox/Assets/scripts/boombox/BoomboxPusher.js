@@ -1,21 +1,12 @@
 ﻿#pragma strict
 
-private var boomboxActive : boolean;
-
-private static var EFFECT_RADIUS = 5;
-private static var EFFECT_FALLOFF_START = 4;
-private static var EFFECT_POWER = 30;
-
-function Start() {
-	boomboxActive = false;
-}
-
-function Update() {
-	// Render concentric rings here
-}
-
-function FixedUpdate() {
-	if(boomboxActive) {
+public class BoomboxPusher extends Boombox
+{
+	private final static var EFFECT_RADIUS = 5;
+	private final static var EFFECT_FALLOFF_START = 4;
+	private final static var EFFECT_POWER = 30;
+	
+	virtual function bbUpdate() {
 		var colliders : Collider[] = Physics.OverlapSphere(transform.position, EFFECT_RADIUS);
 		
 		for(var hit : Collider in colliders) {
@@ -30,14 +21,14 @@ function FixedUpdate() {
 			}
 		}
 	}
-}
-
-function enable() {
-	boomboxActive = true;
-	GetComponent(ParticleSystem).Play();
-}
-
-function disable() {
-	boomboxActive = false;
-	GetComponent(ParticleSystem).Stop();
+	
+	virtual function enable() {
+		super.enable();
+		GetComponent(ParticleSystem).Play();
+	}
+	
+	virtual function disable() {
+		super.disable();
+		GetComponent(ParticleSystem).Stop();
+	}
 }

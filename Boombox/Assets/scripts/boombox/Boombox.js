@@ -20,10 +20,12 @@ class Boombox extends MonoBehaviour
 	
 	virtual function enable() {
 		bbActive = true;
+		audio.Play();
 	}
 	
 	virtual function disable() {
 		bbActive = false;
+		audio.Play();
 	}
 	
 	virtual function toggle() {

@@ -5,7 +5,7 @@ private static var MAX_VELOCITY_CHANGE = 10.0;
 
 private var SPEED = 10;
 
-private static var JUMP_HEIGHT = 2;
+private static var JUMP_HEIGHT = 5;
 
 private var onGround : boolean;
 

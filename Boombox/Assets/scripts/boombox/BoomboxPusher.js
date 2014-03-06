@@ -10,7 +10,7 @@ public class BoomboxPusher extends Boombox
 		var colliders : Collider[] = Physics.OverlapSphere(transform.position, EFFECT_RADIUS);
 		
 		for(var hit : Collider in colliders) {
-			if(hit && hit.rigidbody) {
+			if(hit && hit.rigidbody && hit.rigidbody.gameObject.tag != "Player") {
 				var dist = Vector3.Distance(hit.ClosestPointOnBounds(rigidbody.position), rigidbody.position);
 				
 				var falloffMultiplier = Mathf.Pow(1 - Mathf.Clamp((dist - EFFECT_FALLOFF_START) / (EFFECT_RADIUS - EFFECT_FALLOFF_START), 0, 1), 2);

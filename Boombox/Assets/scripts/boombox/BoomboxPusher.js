@@ -17,7 +17,7 @@ public class BoomboxPusher extends Boombox
 				var forceDirection = (hit.rigidbody.position - rigidbody.position).normalized;
 				var force = forceDirection * EFFECT_POWER * falloffMultiplier;
 				
-				hit.rigidbody.AddForce(force, ForceMode.Force);
+				hit.rigidbody.AddForce(force * hit.rigidbody.mass, ForceMode.Force);
 			}
 		}
 	}

@@ -25,7 +25,7 @@ function Update() {
 		var hit : RaycastHit;
 		if(Physics.Raycast(eyePos, aimDir, hit)) {
 			var planes : Plane[] = GeometryUtility.CalculateFrustumPlanes(Camera.mainCamera);
-			if(hit.rigidbody && GeometryUtility.TestPlanesAABB(planes, hit.collider.bounds)) {
+			if(hit.rigidbody && hit.rigidbody.gameObject.GetComponent(Boombox) && GeometryUtility.TestPlanesAABB(planes, hit.collider.bounds)) {
 				heldObject = hit.rigidbody.gameObject;
 			}
 		}

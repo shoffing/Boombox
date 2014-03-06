@@ -5,11 +5,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: Box01
     100002: //RootNode
+    100004: WoodCrate_OBJ_Box01
     400000: Box01
     400002: //RootNode
+    400004: WoodCrate_OBJ_Box01
     2300000: Box01
+    2300002: WoodCrate_OBJ_Box01
     3300000: Box01
+    3300002: WoodCrate_OBJ_Box01
     4300000: Box01
+    4300002: WoodCrate_OBJ_Box01
     9500000: //RootNode
   materials:
     importMaterials: 1

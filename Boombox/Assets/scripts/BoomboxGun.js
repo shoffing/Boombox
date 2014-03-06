@@ -49,8 +49,12 @@ function Update() {
 			heldObject.GetComponent(Boombox).toggle();
 		}
 		
-		Debug.DrawLine(eyePos, heldObject.rigidbody.position, Color.green);
+		GetComponent(LineRenderer).SetColors(Color.green, Color.green);
+		GetComponent(LineRenderer).SetPosition(0, transform.InverseTransformPoint(eyePos));
+		GetComponent(LineRenderer).SetPosition(1, transform.InverseTransformPoint(heldObject.rigidbody.position));
 	} else {
-		Debug.DrawLine(eyePos, eyePos + aimDir * 666, Color.red);
+		GetComponent(LineRenderer).SetColors(Color.red, Color.red);
+		GetComponent(LineRenderer).SetPosition(0, transform.InverseTransformPoint(eyePos));
+		GetComponent(LineRenderer).SetPosition(1, transform.InverseTransformPoint(eyePos + aimDir * 666));
 	}
 }
